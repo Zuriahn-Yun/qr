@@ -134,4 +134,16 @@ if __name__ == "__main__":
     print(z)
     rank = estimate_rank(z)
     print("Rank Estimation: ", rank)
+    print("Size Testing ------------------------------------")
+    Test = np.random.randn(200,200)
+    print("Generate a random 200 x 200 size matrix")
+    x_true = np.random.randn(200)
+    print("Generate a True x")
+    b = (Test @ x_true )+ 0.01 * np.random.randn(200)
+    print("Generate a b by A @ X + 0.01 * random val")
+    c = backsub(Test.T @ Test,Test.T @ b)
+    print("Compute Relative Error")
+    error = norm(c - x_true) / norm(x_true)
+    print("Error: ", error)
+    
     
